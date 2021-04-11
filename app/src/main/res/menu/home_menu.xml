@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/newPlace"
+        android:icon="@drawable/image1"
+        android:title="Nuevo" />
+    <item
+        android:id="@+id/menuMap"
+        android:icon="@drawable/iamge2"
+        android:title="Mapa" />
+    <item
+        android:id="@+id/searchMenu"
+        android:icon="@drawable/image3"
+        android:title="Buscar" />
+</menu>
