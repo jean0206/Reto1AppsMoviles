@@ -61,7 +61,6 @@ public class modalFragment extends DialogFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.sendAdressButton:
-                Log.e("Error","Observer not found");
                 if(listener==null){
                     Log.e("Error","Observer not found");
                 }else{

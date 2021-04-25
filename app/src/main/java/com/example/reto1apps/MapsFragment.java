@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,10 +21,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+
 public class MapsFragment extends Fragment implements modalFragment.OnOkListener, GoogleMap.OnMarkerClickListener {
 
     private boolean addresCheck;
     private modalFragment dialog;
+    private String address = "";
 
     @Override
     public void onAttach(Context context) {
@@ -45,6 +49,7 @@ public class MapsFragment extends Fragment implements modalFragment.OnOkListener
                     googleMap.addMarker(new MarkerOptions()
                             .position(latLng)
                             .snippet(""));
+                            getAddressFromLatLng(latLng);
                             openModal();
                 }
             });
@@ -79,6 +84,17 @@ public class MapsFragment extends Fragment implements modalFragment.OnOkListener
         }
     }
 
+    private void getAddressFromLatLng( LatLng latLng ) {
+        Geocoder geocoder = new Geocoder( getActivity() );
+
+        try {
+            address = geocoder.getFromLocation( latLng.latitude, latLng.longitude, 1 )
+                    .get( 0 ).getAddressLine( 0 );
+        } catch (IOException e ) {
+
+        }
+    }
+
 
 
     @Override
@@ -96,7 +112,10 @@ public class MapsFragment extends Fragment implements modalFragment.OnOkListener
     @Override
     public void onOk(boolean setAddress) {
         dialog.dismiss();
-        Log.e("address",""+setAddress);
-
+        Bundle bundle = new Bundle();
+        bundle.putString("address",address);
+        AddPlace fragment = new AddPlace();
+        fragment.setArguments(bundle);
+        getFragmentManager().beginTransaction().hide(this).add(R.id.fragmentContainer,fragment).commit();
     }
 }

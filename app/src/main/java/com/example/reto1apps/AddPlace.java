@@ -63,11 +63,13 @@ public class AddPlace extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_add_place,container,false);
-
+        Bundle bundle = this.getArguments();
+        String newAddress = bundle.getString("address");
         addImageButton = root.findViewById(R.id.addImageButton);
         imageSelected = root.findViewById(R.id.selectedImage);
         getUbication = root.findViewById(R.id.getUbication);
         address = root.findViewById(R.id.address);
+        address.setText(newAddress);
         maps = new MapsFragment();
         addImageButton.setOnClickListener(this);
         getUbication.setOnClickListener(this);
