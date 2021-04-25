@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickListener {
+public class MapsFragment extends Fragment implements modalFragment.OnOkListener, GoogleMap.OnMarkerClickListener {
+
+    private boolean addresCheck;
+    private modalFragment dialog;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -36,10 +45,18 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
                     googleMap.addMarker(new MarkerOptions()
                             .position(latLng)
                             .snippet(""));
+                            openModal();
                 }
             });
         }
     };
+
+
+    public void openModal () {
+
+        dialog.setListener(this);
+        dialog.show(getFragmentManager(),"buttonDialog");
+    }
 
 
     @Nullable
@@ -48,6 +65,7 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_maps,container,false);
+        dialog = new modalFragment();
         return root;
     }
 
@@ -61,13 +79,7 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
         }
     }
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if(context instanceof Activity){
 
-        }
-    }
 
     @Override
     public void onDetach() {
@@ -77,5 +89,14 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
     @Override
     public boolean onMarkerClick(Marker marker) {
         return false;
+    }
+
+
+
+    @Override
+    public void onOk(boolean setAddress) {
+        dialog.dismiss();
+        Log.e("address",""+setAddress);
+
     }
 }

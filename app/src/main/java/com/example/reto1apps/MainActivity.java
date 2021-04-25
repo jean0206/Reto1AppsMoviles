@@ -25,7 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener,modalFragment.OnOkListener{
 
     private AddPlace newAddPlaceFragment;
     private MapsFragment newMapFragment;
@@ -113,6 +113,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+
+    }
+
+
+
+    @Override
+    public void onOk(boolean setAddress) {
 
     }
 }

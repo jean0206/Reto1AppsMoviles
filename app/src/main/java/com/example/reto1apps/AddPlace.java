@@ -99,6 +99,11 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         transaction.commit();
     }
 
+    public void addDirection(String texto){
+
+        address.setText(texto);
+    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
