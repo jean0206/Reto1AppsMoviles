@@ -116,6 +116,6 @@ public class MapsFragment extends Fragment implements modalFragment.OnOkListener
         bundle.putString("address",address);
         AddPlace fragment = new AddPlace();
         fragment.setArguments(bundle);
-        getFragmentManager().beginTransaction().hide(this).add(R.id.fragmentContainer,fragment).commit();
+        getFragmentManager().beginTransaction().replace(R.id.fragmentContainer,fragment).commit();
     }
 }

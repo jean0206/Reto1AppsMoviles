@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 (menuItem)-> {
                     switch (menuItem.getItemId()){
                         case R.id.newPlace:
-                            showFragment(newAddPlaceFragment);
+                            showFragment(getAddPlace());
                             break;
                         case R.id.menuMap:
-                            showFragment(newMapFragment);
+                            showFragment(getMapsFragment());
                             break;
                         case R.id.searchMenu:
-                            showFragment(newSearchFragment);
+                            showFragment(getNewSearchFragment());
                             break;
                     }
                     return true;
@@ -81,6 +81,17 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     }
 
+    public AddPlace getAddPlace(){
+        return newAddPlaceFragment;
+    }
+
+    public MapsFragment getMapsFragment() {
+        return newMapFragment;
+    }
+
+    public SearchFragment getNewSearchFragment() {
+        return newSearchFragment;
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

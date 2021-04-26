@@ -8,6 +8,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -34,8 +36,11 @@ import java.util.Map;
  */
 public class AddPlace extends Fragment implements View.OnClickListener {
 
+    private String newNamePlace;
+    private String newAddAddress;
     private ImageButton addImageButton;
     private ImageButton getUbication;
+    private EditText namePlace;
     private ImageView imageSelected;
     private TextView address;
     private File file;
@@ -57,18 +62,19 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_add_place,container,false);
+        View root = inflater.inflate(R.layout.fragment_add_place, container, false);
         Bundle bundle = this.getArguments();
         String newAddress = bundle.getString("address");
+        Log.e("direccion:",""+newAddress);
         addImageButton = root.findViewById(R.id.addImageButton);
         imageSelected = root.findViewById(R.id.selectedImage);
         getUbication = root.findViewById(R.id.getUbication);
         address = root.findViewById(R.id.address);
+        namePlace = root.findViewById(R.id.namePlace);
         address.setText(newAddress);
         maps = new MapsFragment();
         addImageButton.setOnClickListener(this);
@@ -79,32 +85,31 @@ public class AddPlace extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case (R.id.addImageButton):
                 Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 Context context = getContext();
-                file = new File(context.getExternalFilesDir(null)+"/photo.png");
-                Log.e("Ruta",""+file);
-                Uri uri = FileProvider.getUriForFile(context,context.getPackageName(),file);
-                i.putExtra(MediaStore.EXTRA_OUTPUT,uri);
-                startActivityForResult(i,CAMERA_CALLBACK);
+                file = new File(context.getExternalFilesDir(null) + "/photo.png");
+                Log.e("Ruta", "" + file);
+                Uri uri = FileProvider.getUriForFile(context, context.getPackageName(), file);
+                i.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+                startActivityForResult(i, CAMERA_CALLBACK);
                 break;
             case (R.id.getUbication):
-                showFragment(maps);
+                MainActivity activity = (MainActivity) getActivity();
+                activity.showFragment(activity.getMapsFragment());
                 break;
         }
     }
-    public void showFragment(Fragment fragment){
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragmentContainer,fragment);
-        transaction.commit();
-    }
+
+
 
     public void addDirection(String texto){
 
         address.setText(texto);
     }
+
+
 
 
     @Override
