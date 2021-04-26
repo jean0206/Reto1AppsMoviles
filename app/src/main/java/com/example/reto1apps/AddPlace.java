@@ -51,6 +51,63 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
+    public AddPlace(ImageButton addImageButton, ImageButton getUbication, ImageView imageSelected, TextView address, File file, MapsFragment maps) {
+        this.addImageButton = addImageButton;
+        this.getUbication = getUbication;
+        this.imageSelected = imageSelected;
+        this.address = address;
+        this.file = file;
+        this.maps = maps;
+    }
+
+    public ImageButton getAddImageButton() {
+        return addImageButton;
+    }
+
+    public void setAddImageButton(ImageButton addImageButton) {
+        this.addImageButton = addImageButton;
+    }
+
+    public ImageButton getGetUbication() {
+        return getUbication;
+    }
+
+    public void setGetUbication(ImageButton getUbication) {
+        this.getUbication = getUbication;
+    }
+
+    public ImageView getImageSelected() {
+        return imageSelected;
+    }
+
+    public void setImageSelected(ImageView imageSelected) {
+        this.imageSelected = imageSelected;
+    }
+
+    public TextView getAddress() {
+        return address;
+    }
+
+    public void setAddress(TextView address) {
+        this.address = address;
+    }
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public MapsFragment getMaps() {
+        return maps;
+    }
+
+    public void setMaps(MapsFragment maps) {
+        this.maps = maps;
+    }
+
     // TODO: Rename and change types and number of parameters
     public static AddPlace newInstance() {
         AddPlace fragment = new AddPlace();
@@ -123,4 +180,6 @@ public class AddPlace extends Fragment implements View.OnClickListener {
             Log.e("Error mi pai","sisa");
         }
     }
+
+
 }
