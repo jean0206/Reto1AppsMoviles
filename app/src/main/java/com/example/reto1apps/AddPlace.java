@@ -51,13 +51,33 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
-    public AddPlace(ImageButton addImageButton, ImageButton getUbication, ImageView imageSelected, TextView address, File file, MapsFragment maps) {
+    public AddPlace(String newNamePlace, String newAddAddress, ImageButton addImageButton, ImageButton getUbication,
+                    EditText namePlace, ImageView imageSelected, TextView address, File file, MapsFragment maps) {
+        this.newNamePlace = newNamePlace;
+        this.newAddAddress = newAddAddress;
         this.addImageButton = addImageButton;
         this.getUbication = getUbication;
+        this.namePlace = namePlace;
         this.imageSelected = imageSelected;
         this.address = address;
         this.file = file;
         this.maps = maps;
+    }
+
+    public String getNewNamePlace() {
+        return newNamePlace;
+    }
+
+    public void setNewNamePlace(String newNamePlace) {
+        this.newNamePlace = newNamePlace;
+    }
+
+    public String getNewAddAddress() {
+        return newAddAddress;
+    }
+
+    public void setNewAddAddress(String newAddAddress) {
+        this.newAddAddress = newAddAddress;
     }
 
     public ImageButton getAddImageButton() {
@@ -74,6 +94,14 @@ public class AddPlace extends Fragment implements View.OnClickListener {
 
     public void setGetUbication(ImageButton getUbication) {
         this.getUbication = getUbication;
+    }
+
+    public EditText getNamePlace() {
+        return namePlace;
+    }
+
+    public void setNamePlace(EditText namePlace) {
+        this.namePlace = namePlace;
     }
 
     public ImageView getImageSelected() {

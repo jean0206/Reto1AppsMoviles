@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
@@ -16,6 +17,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
     public PlaceAdapter(){
         places = new ArrayList<>();
+        
     }
 
 
@@ -34,7 +36,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
     //Se carga cada info de cada uno de los renglones
     @Override
     public void onBindViewHolder(@NonNull PlaceView holder, int position) {
-        holder.getNamePlace().setText(places.get(position).ge);
+        holder.getNamePlace().setText(places.get(position).getNewNamePlace());
+        holder.getAddress().setText(places.get(position).getNewAddAddress());
     }
 
     @Override
