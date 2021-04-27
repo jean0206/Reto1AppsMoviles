@@ -17,7 +17,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
     public PlaceAdapter(){
         places = new ArrayList<>();
-        
+
     }
 
 
