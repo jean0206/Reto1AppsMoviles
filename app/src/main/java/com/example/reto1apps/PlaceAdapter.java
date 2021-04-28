@@ -47,7 +47,17 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
     public void addPlace(AddPlace place){
         places.add(place);
+    }
 
+    public String searchPlace(String placeName){
+        String thePlace = "";
+        for (int i=0; i <= places.size();i++){
+            if (places.get(i).getNewNamePlace().equalsIgnoreCase(placeName)){
+                thePlace = places.get(i).getNewNamePlace();
+            }
+            this.notifyDataSetChanged();
+        }
+    return thePlace;
     }
 
 }

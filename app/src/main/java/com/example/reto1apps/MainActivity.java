@@ -31,9 +31,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private MapsFragment newMapFragment;
     private SearchFragment newSearchFragment;
     private BottomNavigationView navigator;
+
+    //Lo nuevo
+    private ListFragments searchPlaces;
+
+
     //State
-
-
     private File file;
 
     public static final int PERMISSION_CALLBACK = 11;
@@ -49,10 +52,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         newAddPlaceFragment = AddPlace.newInstance();
         newMapFragment = new MapsFragment();
         newSearchFragment = SearchFragment.newInstance();
+        searchPlaces = new ListFragments();
         showFragment(newAddPlaceFragment);
-
-
-
 
         ActivityCompat.requestPermissions(this, new String[]{
                 Manifest.permission.CAMERA,
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                             break;
                         case R.id.searchMenu:
                             showFragment(getNewSearchFragment());
+                            //showFragment(getSearchPlaces());
                             break;
                     }
                     return true;
@@ -92,6 +94,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     public SearchFragment getNewSearchFragment() {
         return newSearchFragment;
     }
+
+    public ListFragments getSearchPlaces(){
+        return searchPlaces;
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
