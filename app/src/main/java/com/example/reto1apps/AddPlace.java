@@ -173,8 +173,12 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         getUbication = root.findViewById(R.id.getUbication);
         address = root.findViewById(R.id.address);
         namePlace = root.findViewById(R.id.namePlace);
+
         registerButton = root.findViewById(R.id.registerButton);
         address.setText(newAddress);
+
+        address.setText(newAddress+"holi");
+
         maps = new MapsFragment();
         addImageButton.setOnClickListener(this);
         getUbication.setOnClickListener(this);
@@ -205,8 +209,15 @@ public class AddPlace extends Fragment implements View.OnClickListener {
                 String theAddress = address.getText().toString();
                 Place thePlace = new Place(name, theAddress,"", 0.0,0.0,0);
                 observer.onPlaceSave(thePlace);
+
                 Log.e("sisa",thePlace.getName());
+
+                Log.e("sisa","sisa");
+                activity = (MainActivity)getActivity();
+                activity.showFragment(activity.getNewSearchFragment());
+
                 break;
+
 
         }
     }

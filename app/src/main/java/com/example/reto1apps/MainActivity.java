@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                             showFragment(getNewSearchFragment());
                             //showFragment(getSearchPlaces());
                             break;
-
+ 
                     }
                     return true;
                 }
@@ -101,9 +101,10 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         return newSearchFragment;
     }
 
+    /*
     public ListFragments getSearchPlaces(){
         return searchPlaces;
-    }
+    }*/
 
 
     @Override
