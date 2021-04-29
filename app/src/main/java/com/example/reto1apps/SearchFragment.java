@@ -128,6 +128,7 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
     private void llenarLista(){
         thePlaces.add(new Place());
     }*/
+    //Holi
 
 /*
     //Lugar que va a llegar desde el otro fragmento
