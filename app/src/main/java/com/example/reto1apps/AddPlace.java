@@ -1,5 +1,6 @@
 package com.example.reto1apps;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -39,6 +40,7 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     private String newNamePlace;
     private String newAddAddress;
     private ImageButton addImageButton;
+    private Button registerButton;
     private ImageButton getUbication;
     private EditText namePlace;
     private ImageView imageSelected;
@@ -51,6 +53,10 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     private double lat;
     private double longi;
 
+
+    public interface OnPlaceSave{
+        void onPlaceSave(Place thePlace);
+    }
 
     public final static int CAMERA_CALLBACK = 12;
 
@@ -167,10 +173,12 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         getUbication = root.findViewById(R.id.getUbication);
         address = root.findViewById(R.id.address);
         namePlace = root.findViewById(R.id.namePlace);
+        registerButton = root.findViewById(R.id.registerButton);
         address.setText(newAddress);
         maps = new MapsFragment();
         addImageButton.setOnClickListener(this);
         getUbication.setOnClickListener(this);
+        registerButton.setOnClickListener(this);
 
         return root;
     }
@@ -197,7 +205,7 @@ public class AddPlace extends Fragment implements View.OnClickListener {
                 String theAddress = address.getText().toString();
                 Place thePlace = new Place(name, theAddress,"", 0.0,0.0,0);
                 observer.onPlaceSave(thePlace);
-                Log.e("sisa","sisa");
+                Log.e("sisa",thePlace.getName());
                 break;
 
         }
@@ -226,13 +234,12 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     }
 
 
+
     //Observer pattern
     public void setObserver(OnPlaceSave observer){
         this.observer = observer;
     }
 
-    public interface OnPlaceSave{
-        void onPlaceSave(Place thePlace);
-    }
+
 
 }

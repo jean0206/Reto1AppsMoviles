@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,10 +108,17 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
         }
     }
 
+    public void addPlace(Place place) {
+        thePlaces.add(place);
+    }
 
     //Lugar que va a llegar desde el otro fragmento
     @Override
     public void onPlaceSave(Place thePlace) {
-        thePlaces.add(thePlace);
+        if (thePlace!=null) {
+            thePlaces.add(thePlace);
+        }else{
+            Log.e("Error","es null");
+        }
     }
 }
