@@ -25,7 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity  implements View.OnClickListener,modalFragment.OnOkListener,AddPlace.OnPlaceSave{
+public class MainActivity extends AppCompatActivity  implements View.OnClickListener,modalFragment.OnOkListener{
 
     private AddPlace newAddPlaceFragment;
     private MapsFragment newMapFragment;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         },PERMISSION_CALLBACK);
 
         //Metodo de suscripcion de addPlace a SearchFragment
-        newAddPlaceFragment.setObserver(this);
+        newAddPlaceFragment.setObserver(newSearchFragment);
 
         navigator.setOnNavigationItemSelectedListener((menuItem)-> {
 
@@ -147,10 +147,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     public void onOk(boolean setAddress) {
 
     }
-
+/*
     @Override
     public void onPlaceSave(Place thePlace) {
         SearchFragment searchFragment = (SearchFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentPlace);
         searchFragment.addPlace(thePlace);
     }
+
+ */
 }

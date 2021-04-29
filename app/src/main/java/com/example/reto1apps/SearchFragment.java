@@ -112,6 +112,14 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
         thePlaces.add(place);
     }
 
+    @Override
+    public void onPlaceSave(Place thePlace) {
+        //SearchFragment searchFragment = (SearchFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentPlace);
+        //searchFragment.addPlace(thePlace);
+        thePlaces.add(thePlace);
+    }
+
+/*
     //Lugar que va a llegar desde el otro fragmento
     @Override
     public void onPlaceSave(Place thePlace) {
@@ -120,5 +128,5 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
         }else{
             Log.e("Error","es null");
         }
-    }
+    }*/
 }

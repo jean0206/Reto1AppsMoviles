@@ -208,7 +208,7 @@ public class AddPlace extends Fragment implements View.OnClickListener {
                 String name = namePlace.getText().toString();
                 String theAddress = address.getText().toString();
                 Place thePlace = new Place(name, theAddress,"", 0.0,0.0,0);
-                observer.onPlaceSave(thePlace);
+                    observer.onPlaceSave(thePlace);
 
                 Log.e("sisa",thePlace.getName());
 
