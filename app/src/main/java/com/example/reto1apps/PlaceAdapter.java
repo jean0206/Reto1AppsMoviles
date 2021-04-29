@@ -15,9 +15,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
     private ArrayList<AddPlace> places;
 
-    public PlaceAdapter(){
-        places = new ArrayList<>();
-
+    public PlaceAdapter(ArrayList<Place> thePlaces){
+        //places = new ArrayList<>();
     }
 
 

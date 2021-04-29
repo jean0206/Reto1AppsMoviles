@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     private SearchFragment newSearchFragment;
     private BottomNavigationView navigator;
 
+
+
     //Lo nuevo
     private ListFragments searchPlaces;
 
@@ -61,9 +63,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 Manifest.permission.READ_EXTERNAL_STORAGE
         },PERMISSION_CALLBACK);
 
+        //Metodo de suscripcion de addPlace a SearchFragment
+        newAddPlaceFragment.setObserver(newSearchFragment);
 
-        navigator.setOnNavigationItemSelectedListener(
-                (menuItem)-> {
+        navigator.setOnNavigationItemSelectedListener((menuItem)-> {
+
                     switch (menuItem.getItemId()){
                         case R.id.newPlace:
                             showFragment(getAddPlace());
@@ -75,9 +79,11 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                             showFragment(getNewSearchFragment());
                             //showFragment(getSearchPlaces());
                             break;
+
                     }
                     return true;
                 }
+
 
         );
 

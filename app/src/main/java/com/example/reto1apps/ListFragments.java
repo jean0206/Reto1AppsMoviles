@@ -33,7 +33,7 @@ public class ListFragments extends AppCompatActivity implements View .OnClickLis
         layoutManager = new LinearLayoutManager(this);
         placeViewList.setLayoutManager(layoutManager);
 
-        adapter = new PlaceAdapter();
+        //adapter = new PlaceAdapter();
         placeViewList.setAdapter(adapter);
     }
 

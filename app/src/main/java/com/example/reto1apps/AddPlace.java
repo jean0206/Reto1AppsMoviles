@@ -45,6 +45,13 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     private TextView address;
     private File file;
     private MapsFragment maps;
+    private String path;
+
+    private OnPlaceSave observer;
+    private double lat;
+    private double longi;
+
+
     public final static int CAMERA_CALLBACK = 12;
 
     public AddPlace() {
@@ -183,7 +190,16 @@ public class AddPlace extends Fragment implements View.OnClickListener {
             case (R.id.getUbication):
                 MainActivity activity = (MainActivity) getActivity();
                 activity.showFragment(activity.getMapsFragment());
+
                 break;
+            case (R.id.registerButton):
+                String name = namePlace.getText().toString();
+                String theAddress = address.getText().toString();
+                Place thePlace = new Place(name, theAddress,"", 0.0,0.0,0);
+                observer.onPlaceSave(thePlace);
+                Log.e("sisa","sisa");
+                break;
+
         }
     }
 
@@ -209,5 +225,14 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         }
     }
 
+
+    //Observer pattern
+    public void setObserver(OnPlaceSave observer){
+        this.observer = observer;
+    }
+
+    public interface OnPlaceSave{
+        void onPlaceSave(Place thePlace);
+    }
 
 }
