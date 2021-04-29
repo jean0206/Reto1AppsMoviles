@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -52,6 +53,8 @@ public class AddPlace extends Fragment implements View.OnClickListener {
     private OnPlaceSave observer;
     private double lat;
     private double longi;
+
+
 
 
     public interface OnPlaceSave{
@@ -161,8 +164,7 @@ public class AddPlace extends Fragment implements View.OnClickListener {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_add_place, container, false);
         Bundle bundle = this.getArguments();
@@ -183,6 +185,9 @@ public class AddPlace extends Fragment implements View.OnClickListener {
         addImageButton.setOnClickListener(this);
         getUbication.setOnClickListener(this);
         registerButton.setOnClickListener(this);
+
+
+
 
         return root;
     }

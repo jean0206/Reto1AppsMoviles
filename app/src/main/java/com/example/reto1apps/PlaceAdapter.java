@@ -14,6 +14,7 @@ import java.util.UUID;
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
 
     private ArrayList<AddPlace> places;
+    private ArrayList<Place> thePlacesObjects;
 
     public PlaceAdapter(ArrayList<Place> thePlaces){
         //places = new ArrayList<>();
@@ -57,6 +58,13 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceView> {
             this.notifyDataSetChanged();
         }
     return thePlace;
+    }
+
+    public ArrayList<Place> listPlaces(String name){
+        ArrayList<Place> placeToList = new ArrayList<>();
+        
+
+        return placeToList;
     }
 
 }

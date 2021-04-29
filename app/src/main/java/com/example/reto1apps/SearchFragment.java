@@ -90,13 +90,19 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //thePlaces = new ArrayList<>();
         View root = inflater.inflate(R.layout.fragment_places, container, false);
         placeViewList = root.findViewById(R.id.placeViewList);
+
         layoutManager = new LinearLayoutManager(getActivity());
+
+        addPlace(thePlaces.get(0));
         adapter = new PlaceAdapter(thePlaces);
+        placeViewList.setAdapter(adapter);
 
         return root;
     }
+
 
 
     @Override
@@ -118,6 +124,10 @@ public class SearchFragment extends Fragment implements View.OnClickListener, Ad
         //searchFragment.addPlace(thePlace);
         thePlaces.add(thePlace);
     }
+    /*
+    private void llenarLista(){
+        thePlaces.add(new Place());
+    }*/
 
 /*
     //Lugar que va a llegar desde el otro fragmento
